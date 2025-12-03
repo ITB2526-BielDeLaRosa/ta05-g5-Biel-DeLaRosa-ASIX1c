@@ -1,49 +1,113 @@
-<!DOCTYPE html>
-<html lang="ca">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web ITB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+/* --- RESET --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #fff;
+}
 
-    <link rel="stylesheet" href="../css/reset.css"/>
-    <link rel="stylesheet" href="../css/style.css"/>
+/* --- CABECERA (HEADER) --- */
+.header-container {
+    display: flex;                /* Pone los elementos en línea */
+    justify-content: space-between; /* Separa Título (izq) y Botones (der) */
+    align-items: center;          /* Centra verticalmente */
+    padding: 0 40px;              /* Espacio a los lados */
+    height: 80px;                 /* Altura de la barra */
+    border: 2px solid #000;       /* El borde negro del recuadro del header */
+    margin: 20px;                 /* Margen exterior para separarlo del borde pantalla */
+    margin-bottom: 40px;
+}
 
-</head>
-<body>
+.header-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 18px;
+}
 
-    <header class="header-container">
+/* --- BOTONES DE LA DERECHA --- */
+.header-buttons {
+    display: flex;
+    gap: 15px; /* Espacio entre botones */
+}
 
-        <div class="header-title">
-            MENU PRINCIPAL
-        </div>
+.btn {
+    text-decoration: none;
+    padding: 12px 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        <nav class="header-buttons">
-            <a href="#" class="btn btn-blue">Llistat de projectes</a>
-            <a href="#" class="btn btn-blue">Formulari de contacte</a>
-            <a href="#" class="btn btn-dark">3 funcionalitats JS</a>
-        </nav>
+.btn-blue {
+    background-color: #3498db; /* Azul */
+}
 
-    </header>
+.btn-dark {
+    background-color: #2c3e50; /* Azul oscuro casi negro */
+}
 
-    <main class="main-content">
+/* Efecto Hover */
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
 
-        <div class="image-box">
-            IMAGEN
-        </div>
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content {
+    max-width: 1000px;
+    margin: 0 auto; /* Centrado */
+    padding: 0 20px;
+}
 
-        <h2 class="section-title">Destacados</h2>
+/* Caja de Imagen */
+.image-box {
+    width: 100%;
+    height: 150px;
+    border: 2px solid #000;    /* Borde negro */
+    border-radius: 15px;       /* Bordes redondeados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 20px;
+}
 
-        <div class="projects-row">
-            <div class="project-box">Projecte 1</div>
-            <div class="project-box">Projecte 2</div>
-        </div>
+/* Título Destacados */
+.section-title {
+    border: 2px solid #000;    /* Recuadro alrededor del título */
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
 
-        <footer class="footer-box">
-            HOY: INS ITB
-        </footer>
+/* Proyectos */
+.projects-row {
+    display: flex;
+    gap: 30px;
+}
 
-    </main>
+.project-box {
+    width: 150px;
+    height: 80px;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
 
-</body>
-</html>
+/* Footer */
+.footer-box {
+    margin-top: 100px; /* Mucho espacio para empujarlo abajo */
+    border: 2px solid #000;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
