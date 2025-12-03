@@ -1,0 +1,144 @@
+/* --- VARIABLES --- */
+:root {
+    --primary-color: #333;
+    --accent-color: #0056b3;
+    --bg-color: #ffffff;
+    --text-color: #333;
+    --border-color: #ddd;
+}
+
+/* --- GENERAL --- */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+/* --- HEADER / NAVBAR --- */
+.navbar {
+    background-color: white;
+    width: 100%;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: left;
+}
+
+/* --- HERO IMAGEN --- */
+.hero-image {
+    width: 100%;
+    height: 300px;
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.8);
+    padding: 10px 20px;
+    font-weight: bold;
+    z-index: 10;
+    border-radius: 4px;
+}
+
+/* --- DESTACADOS --- */
+.section-title {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.section-title h3 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+/* --- PROYECTOS --- */
+.projects-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    width: 200px;
+    height: 100px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+/* --- FOOTER --- */
+.simple-footer {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    margin-top: 40px;
+    font-weight: bold;
+    color: #666;
+}
