@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacte - Web ITB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Enlace al mismo CSS que la otra página -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+
+    <!-- CABECERA (Igual que en index.html) -->
+    <header class="navbar">
+        <div class="logo-text">
+            MENU PRINCIPAL
+        </div>
+
+        <nav class="header-buttons">
+            <!-- El enlace a 'Llistat' ahora lleva al index.html -->
+            <a href="index.html" class="btn btn-blue">Llistat de projectes</a>
+            <!-- El botón de contacto ahora está activo (clase btn-dark para destacar) -->
+            <a href="contacte.html" class="btn btn-dark">Formulari de contacte</a>
+            <a href="#" class="btn btn-blue">3 funcionalitats JS</a>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL (Específico de Contacto) -->
+    <form>
+
+            <fieldset class="dades_form"> <!-- Sección para los datos personales -->
+                <legend class="titol_dades_form"><strong>DADES PERSONALS</strong></legend>
+                <!-- Título de esta sección -->
+
+
+                <div style="display: inline-block; margin-right: 10px; width: 49%;">
+                    <!-- Campo para el nombre -->
+                    <label for="nom">Nom:</label>
+                    <input style="width: 56%; border:1px solid blue; padding:6px; border-radius: 5px;" type="text"
+                        name="nom" placeholder="Nom" />
+                </div>
+                <br><br>
+
+                <div style="display: inline-block; margin-right: 10px; width: 49%;">
+                    <!-- Campo para los apellidos -->
+                    <label for="cognoms">Cognoms:</label>
+                    <input style="width: 50%; border:1px solid blue; padding:6px; border-radius: 5px; " type="text"
+                        id="cognoms" name="cognoms" placeholder="Cognoms">
+                </div>
+                <br><br>
+
+
+                <div style="display: inline-block; margin-right: 20px; width: 48%;">
+                    <!-- Campo para el correo -->
+                    <label for="email">Correu:</label>
+                    <input style="width: 100%; border:1px solid blue; padding:6px; border-radius: 5px; " type="email"
+                        id="email" name="email" placeholder="correu">
+                    <br><br>
+
+
+                    <div style="display: inline-block; margin-right: 20px; width: 48%;">
+                        <!-- Menú desplegable para la franja de edad -->
+                        <label style="margin-top: 10px;" for="edat">Franja d'edat</label>
+                        <br><br>
+                        <select
+                            style="width: 100%; border:1px solid blue; padding:6px; border-radius: 5px; background-color: white"
+                            id="edat" name="edat">
+                            <option value="menor16">Menor 16</option>
+                            <option value="16-25">16-25</option>
+                            <option value="25-40">25-40</option>
+                            <option value="major40">Major 40</option>
+                        </select>
+                    </div>
+                    <br><br>
+
+
+                    <div>
+                        <!-- Opciones para la zona de residencia -->
+                        Zona de residència
+                        <input type="radio" id="barcelona" name="residencia" value="barcelona" checked>
+                        <label style="color: blue;" for="barcelona">Barcelona</label>
+
+                        <input type="radio" id="baix" name="residencia" value="baix">
+                        <label style="color: blue;" for="baix">Baix Llobregat</label>
+
+                        <input type="radio" id="resta" name="residencia" value="resta">
+                        <label style="color: blue;" for="resta">Resta</label>
+                    </div>
+            </fieldset>
+
+
+
+            <fieldset class="dades_form"> <!-- Sección para los detalles de la consulta -->
+                <legend class="titol_dades_form"><strong>DETALLS DE CONSULTA</strong></legend>
+
+
+                <label>Llenguatge de programació </label>
+                <br></br>
+                <!-- Opciones para lenguajes de programación -->
+                <input type="checkbox" id="php" name="llenguatge" value="PHP" checked>
+                <label style="color: blue;" for="php">PHP</label>
+
+                <input type="checkbox" id="javascript" name="llenguatge" value="Javascript">
+                <label style="color: blue;" for="javascript">Javascript</label>
+
+                <input type="checkbox" id="python" name="llenguatge" value="Python">
+                <label style="color: blue;" for="python">Python</label>
+                <br><br>
+
+                <!-- Campo de texto para escribir la consulta -->
+                <label for="consulta">Escriu la teva consulta</label><br>
+                <textarea id="consulta" name="consulta" rows="5" cols="60"
+                    placeholder="Escriu la teva consulta aqui"></textarea>
+            </fieldset>
+
+            <br>
+
+            <!-- Botones para enviar y restablecer el formulario -->
+            <button class="boton_1" type="submit">Enviar</button>
+            <button class="boton_2" type="reset">Restablecer</button>
+        </form>
+
+        <footer> <!-- Pie de página -->
+            <p>Realitzat per: Biel De La Rosa - SMX2A</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

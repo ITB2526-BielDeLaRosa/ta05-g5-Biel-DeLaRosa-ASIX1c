@@ -29,7 +29,7 @@ body {
     gap: 15px;
 }
 
-/* --- ESTILO DE LOS BOTONES DEL HEADER --- */
+/* --- BOTONES HEADER --- */
 .btn {
     text-decoration: none;
     padding: 12px 25px;
@@ -54,35 +54,107 @@ body {
     transform: translateY(-2px);
 }
 
-/* --- ESTILOS DEL RESTO DE LA PÁGINA (Wireframe) --- */
+/* --- CONTENIDO PRINCIPAL --- */
 .main-content {
     max-width: 1000px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
-/* --- CAJA DE IMAGEN (HERO) MODIFICADA --- */
-.hero-box {
-    width: 100%;
-    height: 150px;           /* Altura fija */
-    border: 2px solid #333;  /* Borde negro */
-    border-radius: 10px;     /* Bordes redondos */
+/* Estilo general para cajas tipo wireframe */
+.wireframe-box {
+    border: 2px solid #333;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 20px; /* Espacio interno para que no se pegue el texto al borde */
+    box-sizing: border-box; /* Importante para que el padding no deforme la caja */
+}
 
-    /* CAMBIOS PARA QUE LA FOTO QUEDE BIEN: */
+/* Caja "TEXTO" */
+.text-area {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;        /* ¡Importante! Recorta lo que sobre de la foto */
-    padding: 0;              /* Quitamos padding para que la foto toque el borde */
-    margin-bottom: 30px;
-    background-color: #f0f0f0; /* Color de fondo por si la imagen tarda en cargar */
+    height: 60px;
 }
 
-/* NUEVA CLASE PARA LA FOTO */
-.hero-img {
-    width: 100%;             /* Ocupa todo el ancho */
-    height: 100%;            /* Ocupa todo el alto */
-    object-fit: cover;       /* LA CLAVE: Recorta la foto para llenar la caja sin estirarla */
+/* --- ESTILOS DEL FORMULARIO (NUEVO) --- */
+
+/* Estilo de los fieldset (las cajas grandes del formulario) */
+.form-section {
+    border: 1px solid blue; /* Borde azul como en la foto */
+    margin-top: 30px;
+    position: relative;
+    padding-top: 25px;
+}
+
+/* El título de cada sección (DADES PERSONALS...) */
+.section-legend {
+    color: blue;
+    font-weight: bold;
+    padding: 0 10px;
+    background: white; /* Para tapar el borde */
+    position: absolute;
+    top: -12px;
+    left: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    color: black;
+    font-weight: normal;
+}
+
+.form-group label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Inputs Azules */
+.input-blue {
+    border: 1px solid blue;
+    border-radius: 4px;
+    padding: 5px;
+    color: #555;
+    outline: none;
+}
+
+.input-blue::placeholder {
+    color: #aaa;
+}
+
+.full-width {
+    width: 100%;
+    max-width: 500px; /* Para que no se estire infinito */
+}
+
+/* Radio buttons y Checkboxes */
+.radio-group label, .form-group label {
+    margin-right: 15px;
+}
+
+/* --- ESTILOS PÁGINA INICIO (INDEX) --- */
+.hero-box {
+    width: 100%;
+    height: 200px;
+    border: 2px solid #333;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.hero-image-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
@@ -99,7 +171,6 @@ body {
     gap: 30px;
 }
 
-/* --- BOTONES DE PROYECTOS --- */
 .project-box {
     width: 200px;
     height: 100px;
@@ -122,6 +193,25 @@ body {
     color: #000;
 }
 
+/* Botón "ENVIAR" */
+.submit-box {
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    background-color: white;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.submit-box:hover {
+    background-color: #333;
+    color: white;
+}
+
+/* --- FOOTER --- */
 .footer-box {
     margin-top: 50px;
     padding-top: 20px;
