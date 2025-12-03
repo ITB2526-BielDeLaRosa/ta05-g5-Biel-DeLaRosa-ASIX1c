@@ -1,189 +1,113 @@
-/* --- VARIABLES DE COLOR (Para cambiar el tema fácilmente) --- */
-:root {
-    --primary-color: #3498db; /* Azul vibrante */
-    --secondary-color: #2c3e50; /* Azul oscuro */
-    --bg-color: #ecf0f1;        /* Gris muy claro para el fondo */
-    --text-dark: #333;
-    --shadow-soft: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave */
-    --shadow-hover: 0 8px 16px rgba(0,0,0,0.2); /* Sombra más fuerte al pasar el ratón */
-}
-
-/* --- ESTILOS GENERALES --- */
+/* --- RESET --- */
 body {
-    font-family: 'Roboto', sans-serif; /* Usamos la nueva fuente */
-    background-color: var(--bg-color);
     margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    color: var(--text-dark);
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #fff;
 }
 
-/* --- ANIMACIÓN DE ENTRADA DE LA PÁGINA --- */
-@keyframes slideUpFade {
-    from {
-        opacity: 0;
-        transform: translateY(30px); /* Empieza un poco más abajo y transparente */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0); /* Termina en su sitio y visible */
-    }
+/* --- CABECERA (HEADER) --- */
+.header-container {
+    display: flex;                /* Pone los elementos en línea */
+    justify-content: space-between; /* Separa Título (izq) y Botones (der) */
+    align-items: center;          /* Centra verticalmente */
+    padding: 0 40px;              /* Espacio a los lados */
+    height: 80px;                 /* Altura de la barra */
+    border: 2px solid #000;       /* El borde negro del recuadro del header */
+    margin: 20px;                 /* Margen exterior para separarlo del borde pantalla */
+    margin-bottom: 40px;
 }
 
-.fade-in {
-    animation: slideUpFade 0.8s ease-out forwards; /* Aplica la animación */
-}
-
-/* LA "HOJA" PRINCIPAL */
-.container {
-    background-color: white;
-    width: 100%;
-    max-width: 960px;
-    min-height: 95vh;
-    /* En lugar de borde, usamos sombra y bordes redondeados */
-    box-shadow: var(--shadow-soft);
-    border-radius: 15px;
-    padding: 30px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    overflow: hidden; /* Para que nada se salga de las esquinas redondeadas */
-}
-
-/* 1. HEADER */
-header {
-    text-align: center;
-    color: var(--secondary-color);
-    border-bottom: 2px solid var(--bg-color); /* Línea sutil debajo */
-    padding-bottom: 15px;
-}
-
-header h1 {
-    margin: 0;
+.header-title {
+    font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 18px;
 }
 
-/* 2. BOTONES DE NAVEGACIÓN (ANIMADOS) */
-.nav-links {
+/* --- BOTONES DE LA DERECHA --- */
+.header-buttons {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    gap: 15px; /* Espacio entre botones */
 }
 
 .btn {
-    padding: 15px 25px;
-    text-align: center;
     text-decoration: none;
+    padding: 12px 20px;
+    color: white;
     font-weight: bold;
-    border-radius: 8px;
-    flex: 1;
-    min-width: 180px;
+    border-radius: 5px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* TRANSICIÓN: La clave para animaciones suaves */
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Estilo azul */
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
+.btn-blue {
+    background-color: #3498db; /* Azul */
 }
 
-/* Estilo oscuro */
-.btn-secondary {
-    background-color: var(--secondary-color);
-    color: white;
+.btn-dark {
+    background-color: #2c3e50; /* Azul oscuro casi negro */
 }
 
-/* HOVER: Qué pasa al poner el ratón encima */
+/* Efecto Hover */
 .btn:hover {
-    transform: translateY(-3px); /* Se mueve un poquito hacia arriba */
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2); /* La sombra crece */
-    filter: brightness(110%); /* Se vuelve un poco más brillante */
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
 
-
-/* 3. SECCIÓN IMAGEN HERO (Con fondo real) */
-.hero-image {
-    /* Usamos una imagen de Lorem Picsum como fondo */
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos/id/10/1000/400');
-    background-size: cover;
-    background-position: center;
-    border-radius: 15px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interior */
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content {
+    max-width: 1000px;
+    margin: 0 auto; /* Centrado */
+    padding: 0 20px;
 }
 
-.hero-content h2 { margin: 0; font-size: 2rem; }
-.hero-content p { margin: 10px 0 0; font-weight: 300; }
-
-
-/* 4. TÍTULO DESTACADOS */
-.section-title {
-    text-align: left;
-    border-left: 5px solid var(--primary-color); /* Barra de color lateral */
-    padding-left: 15px;
-}
-.section-title h3 { margin: 0; color: var(--secondary-color); }
-
-
-/* 5. TARJETAS DE PROYECTOS (ANIMADAS) */
-.projects-grid {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap; /* Permite que bajen si no caben */
-}
-
-.project-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    flex: 1 1 250px; /* Crecimiento flexible, ancho base 250px */
-    text-align: center;
-    cursor: pointer;
-    /* TRANSICIÓN SUAVE */
-    transition: all 0.3s ease;
-}
-
-.project-card img {
+/* Caja de Imagen */
+.image-box {
     width: 100%;
     height: 150px;
-    object-fit: cover; /* La imagen cubre el área sin deformarse */
+    border: 2px solid #000;    /* Borde negro */
+    border-radius: 15px;       /* Bordes redondeados */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 20px;
 }
 
-.project-card h4 {
-    padding: 15px;
-    margin: 0;
-    color: var(--secondary-color);
+/* Título Destacados */
+.section-title {
+    border: 2px solid #000;    /* Recuadro alrededor del título */
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
-/* HOVER EN TARJETAS */
-.project-card:hover {
-    transform: scale(1.03); /* Aumenta ligeramente de tamaño */
-    box-shadow: var(--shadow-hover); /* Sombra más pronunciada */
+/* Proyectos */
+.projects-row {
+    display: flex;
+    gap: 30px;
 }
 
-/* ESPACIADOR */
-.spacer { flex-grow: 1; }
+.project-box {
+    width: 150px;
+    height: 80px;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
 
-/* 6. FOOTER */
-footer {
-    text-align: center;
+/* Footer */
+.footer-box {
+    margin-top: 100px; /* Mucho espacio para empujarlo abajo */
+    border: 2px solid #000;
     padding: 20px;
-    color: white;
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-    font-size: 0.9rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
