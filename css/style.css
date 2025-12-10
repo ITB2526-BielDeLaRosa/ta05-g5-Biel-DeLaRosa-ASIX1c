@@ -83,7 +83,7 @@ body {
 
 /* Estilo de los fieldset */
 .dades_form, .form-section {
-    border: 1px solid blue;
+    border: 1px solid black;
     margin-top: 30px;
     position: relative;
     padding: 20px;
@@ -100,7 +100,7 @@ body {
 
 /* Inputs y Selects */
 input, select, textarea {
-    border: 1px solid blue;
+    border: 1px solid black;
     border-radius: 4px;
     padding: 5px;
     color: #555;
