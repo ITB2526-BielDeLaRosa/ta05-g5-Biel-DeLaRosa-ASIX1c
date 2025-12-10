@@ -92,7 +92,7 @@ body {
 
 /* El título de cada sección */
 .titol_dades_form, .section-legend {
-    color: blue;
+    color: black;
     font-weight: bold;
     padding: 0 10px;
     background: white;
