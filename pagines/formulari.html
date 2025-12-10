@@ -6,97 +6,83 @@
     <title>Contacte - Web ITB</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Enlace al mismo CSS que la otra página -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/reset.css">
 </head>
 <body>
 
-    <!-- CABECERA (Igual que en index.html) -->
     <header class="navbar">
         <div class="logo-text">
             MENU PRINCIPAL
         </div>
 
         <nav class="header-buttons">
-            <!-- El enlace a 'Llistat' ahora lleva al index.html -->
-            <a href="../index.html" class="btn btn-blue">Llistat de projectes</a>
-            <!-- El botón de contacto ahora está activo (clase btn-dark para destacar) -->
-            <a href="./formulari.html" class="btn btn-dark">Formulari de contacte</a>
+            <a href="index.html" class="btn btn-blue">Llistat de projectes</a>
+            <a href="contacte.html" class="btn btn-dark">Formulari de contacte</a>
             <a href="#" class="btn btn-blue">3 funcionalitats JS</a>
         </nav>
     </header>
-    <!-- CONTENIDO PRINCIPAL (Específico de Contacto) -->
-    <br><br>
-    <form>
 
-            <fieldset class="dades_form"> <!-- Sección para los datos personales -->
+    <div class="container" style="padding: 20px;">
+
+        <br><br>
+        <form>
+            <fieldset class="dades_form">
                 <legend class="titol_dades_form"><strong>DADES PERSONALS</strong></legend>
-                <!-- Título de esta sección -->
 
-                <div style="display: inline-block; margin-right: 10px; width: 49%;">
-                    <!-- Campo para el nombre -->
+                <div style="display: inline-block; width: 48%; margin-bottom: 15px;">
                     <label for="nom">Nom:</label>
-                    <input style="width: 56%; border:1px solid black; padding:6px; border-radius: 5px;" type="text"
-                        name="nom" placeholder="Nom" />
+                    <br>
+                    <input style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
+                           type="text" id="nom" name="nom" placeholder="Nom" />
                 </div>
-                <br><br>
 
-                <div style="display: inline-block; margin-right: 10px; width: 49%;">
-                    <!-- Campo para los apellidos -->
+                <div style="display: inline-block; width: 48%; margin-bottom: 15px;">
                     <label for="cognoms">Cognoms:</label>
-                    <input style="width: 50%; border:1px solid black; padding:6px; border-radius: 5px; " type="text"
-                        id="cognoms" name="cognoms" placeholder="Cognoms">
+                    <br>
+                    <input style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
+                           type="text" id="cognoms" name="cognoms" placeholder="Cognoms">
                 </div>
-                <br><br>
 
+                <br>
 
-                <div style="display: inline-block; margin-right: 20px; width: 48%;">
-                    <!-- Campo para el correo -->
+                <div style="display: inline-block; width: 48%;">
                     <label for="email">Correu:</label>
-                    <input style="width: 100%; border:1px solid black; padding:6px; border-radius: 5px; " type="email"
-                        id="email" name="email" placeholder="correu">
-                    <br><br>
+                    <br>
+                    <input style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
+                           type="email" id="email" name="email" placeholder="correu">
+                </div>
 
-
-                    <div style="display: inline-block; margin-right: 20px; width: 48%;">
-                        <!-- Menú desplegable para la franja de edad -->
-                        <label style="margin-top: 10px;" for="edat">Franja d'edat</label>
-                        <br><br>
-                        <select
-                            style="width: 100%; border:1px solid black; padding:6px; border-radius: 5px; background-color: white"
+                <div style="display: inline-block; width: 48%;">
+                    <label for="edat">Franja d'edat</label>
+                    <br>
+                    <select style="width: 62%; border:1px solid black; padding:6px; border-radius: 5px; background-color: white;"
                             id="edat" name="edat">
-                            <option value="menor16">Menor 16</option>
-                            <option value="16-25">16-25</option>
-                            <option value="25-40">25-40</option>
-                            <option value="major40">Major 40</option>
-                        </select>
-                    </div>
-                    <br><br>
+                        <option value="menor16">Menor 16</option>
+                        <option value="16-25">16-25</option>
+                        <option value="25-40">25-40</option>
+                        <option value="major40">Major 40</option>
+                    </select>
+                </div>
 
             </fieldset>
 
-
             <br><br>
-            <fieldset class="dades_form"> <!-- Sección para los detalles de la consulta -->
+
+            <fieldset class="dades_form">
                 <legend class="titol_dades_form"><strong>DETALLS DE CONSULTA</strong></legend>
 
-                <!-- Campo de texto para escribir la consulta -->
                 <label for="consulta">Escriu la teva consulta</label><br>
-                <textarea id="consulta" name="consulta" rows="5" cols="60"
+                <textarea id="consulta" name="consulta" rows="5" style="width: 80%; box-sizing: border-box; margin-top: 5px;"
                     placeholder="Escriu la teva consulta aqui"></textarea>
             </fieldset>
 
             <br>
 
-            <!-- Botones para enviar y restablecer el formulario -->
-            <button class="boton_1" type="submit">Enviar</button>
+            <button class="btn btn-blue" type="submit" style="cursor: pointer;">Enviar</button>
         </form>
-
-
 
     </div>
 
 </body>
-
 </html>
