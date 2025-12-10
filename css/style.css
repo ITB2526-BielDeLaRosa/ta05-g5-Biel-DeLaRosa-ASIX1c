@@ -92,7 +92,7 @@ body {
 
 /* El título de cada sección */
 .titol_dades_form, .section-legend {
-    color: black;
+    color: #3498db;
     font-weight: bold;
     padding: 0 10px;
     background: white;
@@ -188,7 +188,7 @@ body.dark-mode .form-section {
 body.dark-mode .titol_dades_form,
 body.dark-mode .section-legend {
     background-color: #121212; /* Fondo negro para tapar la línea */
-    color: #64b5f6; /* Azul claro */
+    color: #3498db; /* Azul claro */
 }
 
 /* 4. Inputs (Cajas de texto) oscuras */
