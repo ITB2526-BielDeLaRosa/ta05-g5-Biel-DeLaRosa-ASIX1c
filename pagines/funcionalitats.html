@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Funcionalitats JS - Web ITB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        /* Estilos específicos para que estas cajas se vean bien */
+        .js-box {
+            text-align: center;
+            padding: 30px;
+        }
+        .clock-display {
+            font-size: 40px;
+            font-weight: bold;
+            color: #3498db;
+            font-family: 'Courier New', monospace;
+            margin-top: 10px;
+        }
+        .color-box {
+            height: 100px;
+            border: 2px solid #333;
+            margin: 20px auto;
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-text">FUNCIONALITATS JS</div>
+        <nav class="header-buttons">
+            <a href="llistat.html" class="btn btn-dark">Torna al llistat</a>
+            <a href="formulari.html" class="btn btn-blue">Formulari</a>
+            <a href="#" class="btn btn-dark">3 funcionalitats JS</a>
+            <button id="btn-tema" class="btn btn-blue" style="cursor: pointer;">🌙 / ☀️</button>
+        </nav>
+    </header>
+
+    <div class="container" style="margin-top: 30px;">
+
+        <div class="detail-header">
+            DEMOSTRACIÓ DE JAVASCRIPT DOM
+        </div>
+
+        <div class="detail-subheader">
+            Aquesta pàgina conté 3 scripts independents interactuant amb l'HTML.
+        </div>
+
+        <div class="wireframe-box js-box">
+            <h3 style="font-weight: bold; font-size: 20px;">1. Rellotge Digital en Temps Real</h3>
+            <p>Utilitza <code>setInterval</code> per actualitzar l'hora cada segon.</p>
+            <div id="rellotge" class="clock-display">Carregant...</div>
+        </div>
+
+        <div class="wireframe-box js-box">
+            <h3 style="font-weight: bold; font-size: 20px;">2. Generador de Colors Hexadecimals</h3>
+            <p>Fes clic al botó per canviar el color de la caixa aleatòriament.</p>
+
+            <div id="caixa-color" class="color-box">
+                Sóc una caixa de colors
+            </div>
+
+            <button onclick="canviarColor()" class="btn btn-blue">Canviar Color</button>
+        </div>
+
+        <div class="wireframe-box js-box">
+            <h3 style="font-weight: bold; font-size: 20px;">3. Comptador de Caràcters en Viu</h3>
+            <p>Escriu alguna cosa i mira com el número canvia.</p>
+
+            <textarea id="text-input" rows="4" style="width: 80%; margin-top: 15px; padding: 10px;" placeholder="Escriu aquí..."></textarea>
+
+            <p style="margin-top: 10px; font-weight: bold;">
+                Caràcters: <span id="contador" style="color: #3498db; font-size: 24px;">0</span>
+            </p>
+        </div>
+
+        <footer class="footer-box">
+            2025/26 Alumnes : Biel y Ramiro
+        </footer>
+
+    </div>
+
+    <script>
+        // --- 1. SCRIPT DEL RELLOTGE ---
+        function actualitzarRellotge() {
+            const ara = new Date();
+            const hores = String(ara.getHours()).padStart(2, '0');
+            const minuts = String(ara.getMinutes()).padStart(2, '0');
+            const segons = String(ara.getSeconds()).padStart(2, '0');
+
+            const horaText = `${hores}:${minuts}:${segons}`;
+            document.getElementById('rellotge').innerText = horaText;
+        }
+        // Actualizar cada 1000ms (1 segundo)
+        setInterval(actualitzarRellotge, 1000);
+        actualitzarRellotge(); // Ejecutar una vez al inicio para no esperar 1 segundo
+
+        // --- 2. SCRIPT DE CANVI DE COLOR ---
+        function canviarColor() {
+            const caixa = document.getElementById('caixa-color');
+            // Generar un color hexadecimal aleatorio
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+
+            caixa.style.backgroundColor = randomColor;
+            caixa.innerText = "Color: " + randomColor;
+            caixa.style.color = "white"; // Texto blanco para contraste
+
+            // Un pequeño efecto de sombra en el texto para que se lea siempre
+            caixa.style.textShadow = "1px 1px 2px black";
+        }
+
+        // --- 3. SCRIPT DEL COMPTADOR ---
+        const input = document.getElementById('text-input');
+        const contador = document.getElementById('contador');
+
+        input.addEventListener('input', function() {
+            const longitud = input.value.length;
+            contador.innerText = longitud;
+        });
+
+        // --- SCRIPT GENERAL: MODO OSCURO (Para que no falle el header) ---
+        const botonTema = document.getElementById('btn-tema');
+        const cuerpo = document.body;
+
+        if (localStorage.getItem('miTema') === 'oscuro') {
+            cuerpo.classList.add('dark-mode');
+        }
+
+        if (botonTema) {
+            botonTema.addEventListener('click', function() {
+                cuerpo.classList.toggle('dark-mode');
+                if (cuerpo.classList.contains('dark-mode')) {
+                    localStorage.setItem('miTema', 'oscuro');
+                } else {
+                    localStorage.setItem('miTema', 'claro');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
