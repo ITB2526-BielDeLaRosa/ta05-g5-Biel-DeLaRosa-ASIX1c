@@ -3,41 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 Funcionalitats JS - Web ITB</title>
+    <title>3 funcionalitats JS - Web ITB</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/reset.css">
-
-    <style>
-        /* Estilos específicos para que estas cajas se vean bien */
-        .js-box {
-            text-align: center;
-            padding: 30px;
-        }
-        .clock-display {
-            font-size: 40px;
-            font-weight: bold;
-            color: #3498db;
-            font-family: 'Courier New', monospace;
-            margin-top: 10px;
-        }
-        .color-box {
-            height: 100px;
-            border: 2px solid #333;
-            margin: 20px auto;
-            width: 80%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            background-color: #eee;
-        }
-    </style>
 </head>
 <body>
 
     <header class="navbar">
-        <div class="logo-text">funcionalitats JS </div>
+        <div class="logo-text">funcionalitats JS</div>
         <nav class="header-buttons">
             <a href="../index.html" class="btn btn-dark">Torna al llistat</a>
             <a href="formulari.html" class="btn btn-blue">Formulari de contacte</a>
@@ -48,39 +22,26 @@
     <div class="container" style="margin-top: 30px;">
 
         <div class="detail-header">
-            DEMOSTRACIÓ DE JAVASCRIPT DOM
+            COL·LECCIÓ D'EFECTES (MIX)
         </div>
 
         <div class="detail-subheader">
-            Aquesta pàgina conté 3 scripts independents interactuant amb l'HTML.
+            Esfera 3D, Focs Artificials i la Nebulosa original.
         </div>
 
-        <div class="wireframe-box js-box">
-            <h3 style="font-weight: bold; font-size: 20px;">1. Rellotge Digital en Temps Real</h3>
-            <p>Utilitza <code>setInterval</code> per actualitzar l'hora cada segon.</p>
-            <div id="rellotge" class="clock-display">Carregant...</div>
+        <div class="wireframe-box js-box" id="box1">
+            <div class="instruction-text">1. Esfera Cibernètica (Mou el ratolí)</div>
+            <canvas id="canvasSphere"></canvas>
         </div>
 
-        <div class="wireframe-box js-box">
-            <h3 style="font-weight: bold; font-size: 20px;">2. Generador de Colors Hexadecimals</h3>
-            <p>Fes clic al botó per canviar el color de la caixa aleatòriament.</p>
-
-            <div id="caixa-color" class="color-box">
-                Sóc una caixa de colors
-            </div>
-
-            <button onclick="canviarColor()" class="btn btn-blue">Canviar Color</button>
+        <div class="wireframe-box js-box" id="box2" style="cursor: crosshair;">
+            <div class="instruction-text">2. Focs Artificials (Fes CLIC!)</div>
+            <canvas id="canvasFireworks"></canvas>
         </div>
 
-        <div class="wireframe-box js-box">
-            <h3 style="font-weight: bold; font-size: 20px;">3. Comptador de Caràcters en Viu</h3>
-            <p>Escriu alguna cosa i mira com el número canvia.</p>
-
-            <textarea id="text-input" rows="4" style="width: 80%; margin-top: 15px; padding: 10px;" placeholder="Escriu aquí..."></textarea>
-
-            <p style="margin-top: 10px; font-weight: bold;">
-                Caràcters: <span id="contador" style="color: #3498db; font-size: 24px;">0</span>
-            </p>
+        <div class="wireframe-box js-box" id="box3">
+            <div class="instruction-text">3. Nebulosa de Neó (Dibuixa!)</div>
+            <canvas id="canvasNebula"></canvas>
         </div>
 
         <footer class="footer-box">
@@ -90,61 +51,206 @@
     </div>
 
     <script>
-        // --- 1. SCRIPT DEL RELLOTGE ---
-        function actualitzarRellotge() {
-            const ara = new Date();
-            const hores = String(ara.getHours()).padStart(2, '0');
-            const minuts = String(ara.getMinutes()).padStart(2, '0');
-            const segons = String(ara.getSeconds()).padStart(2, '0');
+        // =========================================================
+        // 1. ESFERA 3D ROTATORIA
+        // =========================================================
+        const cvsSphere = document.getElementById('canvasSphere');
+        const ctxSphere = cvsSphere.getContext('2d');
 
-            const horaText = `${hores}:${minuts}:${segons}`;
-            document.getElementById('rellotge').innerText = horaText;
+        function resizeSphere() {
+            cvsSphere.width = cvsSphere.parentElement.offsetWidth;
+            cvsSphere.height = cvsSphere.parentElement.offsetHeight;
         }
-        // Actualizar cada 1000ms (1 segundo)
-        setInterval(actualitzarRellotge, 1000);
-        actualitzarRellotge(); // Ejecutar una vez al inicio para no esperar 1 segundo
+        resizeSphere();
 
-        // --- 2. SCRIPT DE CANVI DE COLOR ---
-        function canviarColor() {
-            const caixa = document.getElementById('caixa-color');
-            // Generar un color hexadecimal aleatorio
-            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        let sphereMouseX = 0;
+        let sphereMouseY = 0;
 
-            caixa.style.backgroundColor = randomColor;
-            caixa.innerText = "Color: " + randomColor;
-            caixa.style.color = "white"; // Texto blanco para contraste
-
-            // Un pequeño efecto de sombra en el texto para que se lea siempre
-            caixa.style.textShadow = "1px 1px 2px black";
-        }
-
-        // --- 3. SCRIPT DEL COMPTADOR ---
-        const input = document.getElementById('text-input');
-        const contador = document.getElementById('contador');
-
-        input.addEventListener('input', function() {
-            const longitud = input.value.length;
-            contador.innerText = longitud;
+        cvsSphere.addEventListener('mousemove', (e) => {
+            const rect = cvsSphere.getBoundingClientRect();
+            sphereMouseX = (e.clientX - rect.left - cvsSphere.width/2) * 0.001;
+            sphereMouseY = (e.clientY - rect.top - cvsSphere.height/2) * 0.001;
         });
 
-        // --- SCRIPT GENERAL: MODO OSCURO (Para que no falle el header) ---
-        const botonTema = document.getElementById('btn-tema');
-        const cuerpo = document.body;
+        function animateSphere() {
+            ctxSphere.fillStyle = 'rgba(0,0,0,0.2)';
+            ctxSphere.fillRect(0, 0, cvsSphere.width, cvsSphere.height);
 
-        if (localStorage.getItem('miTema') === 'oscuro') {
-            cuerpo.classList.add('dark-mode');
+            const time = Date.now() * 0.001;
+            const cx = cvsSphere.width / 2;
+            const cy = cvsSphere.height / 2;
+            const radius = 120;
+
+            let rotX = time * 0.5 + sphereMouseY * 2;
+            let rotY = time * 0.3 + sphereMouseX * 2;
+
+            for (let i = 0; i < 300; i++) {
+                const phi = Math.acos(-1 + (2 * i) / 300);
+                const theta = Math.sqrt(300 * Math.PI) * phi;
+
+                let x = radius * Math.cos(theta) * Math.sin(phi);
+                let y = radius * Math.sin(theta) * Math.sin(phi);
+                let z = radius * Math.cos(phi);
+
+                let tempX = x * Math.cos(rotY) - z * Math.sin(rotY);
+                let tempZ = x * Math.sin(rotY) + z * Math.cos(rotY);
+                x = tempX; z = tempZ;
+
+                let tempY = y * Math.cos(rotX) - z * Math.sin(rotX);
+                z = y * Math.sin(rotX) + z * Math.cos(rotX);
+                y = tempY;
+
+                let scale = 300 / (300 + z);
+                let px = cx + x * scale;
+                let py = cy + y * scale;
+                let size = 2 * scale;
+
+                ctxSphere.beginPath();
+                ctxSphere.arc(px, py, size, 0, Math.PI * 2);
+                ctxSphere.fillStyle = `hsl(${i + time * 50}, 100%, 60%)`;
+                ctxSphere.fill();
+            }
+            requestAnimationFrame(animateSphere);
+        }
+        animateSphere();
+
+
+        // =========================================================
+        // 2. FUEGOS ARTIFICIALES
+        // =========================================================
+        const cvsFire = document.getElementById('canvasFireworks');
+        const ctxFire = cvsFire.getContext('2d');
+
+        function resizeFire() {
+            cvsFire.width = cvsFire.parentElement.offsetWidth;
+            cvsFire.height = cvsFire.parentElement.offsetHeight;
+        }
+        resizeFire();
+
+        let particlesFire = [];
+
+        cvsFire.addEventListener('click', (e) => {
+            const rect = cvsFire.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            createExplosion(x, y);
+        });
+
+        function createExplosion(x, y) {
+            const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            for (let i = 0; i < 50; i++) {
+                particlesFire.push({
+                    x: x, y: y,
+                    vx: (Math.random() - 0.5) * 8,
+                    vy: (Math.random() - 0.5) * 8,
+                    alpha: 1,
+                    color: color
+                });
+            }
         }
 
-        if (botonTema) {
-            botonTema.addEventListener('click', function() {
-                cuerpo.classList.toggle('dark-mode');
-                if (cuerpo.classList.contains('dark-mode')) {
-                    localStorage.setItem('miTema', 'oscuro');
-                } else {
-                    localStorage.setItem('miTema', 'claro');
+        function animateFire() {
+            ctxFire.fillStyle = 'rgba(0, 0, 0, 0.15)';
+            ctxFire.fillRect(0, 0, cvsFire.width, cvsFire.height);
+
+            for (let i = 0; i < particlesFire.length; i++) {
+                let p = particlesFire[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.15; // Gravedad
+                p.alpha -= 0.02;
+
+                ctxFire.globalAlpha = p.alpha;
+                ctxFire.fillStyle = p.color;
+                ctxFire.beginPath();
+                ctxFire.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                ctxFire.fill();
+
+                if (p.alpha <= 0) {
+                    particlesFire.splice(i, 1);
+                    i--;
                 }
-            });
+            }
+            ctxFire.globalAlpha = 1;
+            requestAnimationFrame(animateFire);
         }
+        animateFire();
+
+
+        // =========================================================
+        // 3. NEBULOSA
+        // =========================================================
+        const cvsNeb = document.getElementById('canvasNebula');
+        const ctxNeb = cvsNeb.getContext('2d');
+
+        function resizeNeb() {
+            cvsNeb.width = cvsNeb.parentElement.offsetWidth;
+            cvsNeb.height = cvsNeb.parentElement.offsetHeight;
+        }
+        resizeNeb();
+
+        let nebulaParticles = [];
+        let hue = 0;
+
+        cvsNeb.addEventListener('mousemove', function(e) {
+             const rect = cvsNeb.getBoundingClientRect();
+             const x = e.clientX - rect.left;
+             const y = e.clientY - rect.top;
+             for(let i=0; i<3; i++){
+                 nebulaParticles.push(new NebulaParticle(x, y));
+             }
+        });
+
+        class NebulaParticle {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.size = Math.random() * 15 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                this.color = 'hsl(' + hue + ', 100%, 50%)';
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+            draw() {
+                ctxNeb.fillStyle = this.color;
+                ctxNeb.beginPath();
+                ctxNeb.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctxNeb.fill();
+            }
+        }
+
+        function animateNeb() {
+            ctxNeb.fillStyle = 'rgba(0,0,0,0.1)';
+            ctxNeb.fillRect(0,0, cvsNeb.width, cvsNeb.height);
+
+            ctxNeb.globalCompositeOperation = 'lighter';
+
+            for(let i=0; i<nebulaParticles.length; i++) {
+                nebulaParticles[i].update();
+                nebulaParticles[i].draw();
+                if(nebulaParticles[i].size <= 0.3) {
+                    nebulaParticles.splice(i, 1);
+                    i--;
+                }
+            }
+            ctxNeb.globalCompositeOperation = 'source-over';
+            hue += 2;
+            requestAnimationFrame(animateNeb);
+        }
+        animateNeb();
+
+        // =========================================================
+        // CONFIGURACIÓN GLOBAL (RESIZE)
+        // =========================================================
+        window.addEventListener('resize', () => {
+            resizeSphere();
+            resizeFire();
+            resizeNeb();
+        });
+
+        // El código del tema oscuro se ha eliminado completamente.
     </script>
 </body>
 </html>
