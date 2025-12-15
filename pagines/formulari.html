@@ -12,12 +12,12 @@
 <body>
 
     <header class="navbar">
-        <div class="logo-text">Formulari</div>
+        <div class="logo-text">Form</div>
 
         <nav class="header-buttons">
-            <a href="../index.html" class="btn btn-blue">Llistat de projectes</a>
-            <a href="formulari.html" class="btn btn-dark">Formulari de contacte</a>
-            <a href="funcionalitats.html" class="btn btn-blue">3 funcionalitats JS</a>
+            <a href="../index.html" class="btn btn-blue">List of projects</a>
+            <a href="formulari.html" class="btn btn-dark">Contact form</a>
+            <a href="funcionalitats.html" class="btn btn-blue">3 JS functionalities</a>
         </nav>
     </header>
 
@@ -25,40 +25,40 @@
 
         <form>
             <fieldset class="dades_form">
-                <legend class="titol_dades_form"><strong>DADES PERSONALS</strong></legend>
+                <legend class="titol_dades_form"><strong>PERSONAL DATA</strong></legend>
 
                 <div style="display: inline-block; width: 48%; margin-bottom: 15px;">
-                    <label for="nom">Nom:</label>
+                    <label for="nom">Name:</label>
                     <br>
                     <input style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
-                           type="text" id="nom" name="nom" placeholder="Nom" />
+                           type="text" id="nom" name="nom">
                 </div>
 
                 <div style="display: inline-block; width: 48%; margin-bottom: 15px;">
-                    <label for="cognoms">Cognoms:</label>
+                    <label for="cognoms">Last names:</label>
                     <br>
                     <input style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
-                           type="text" id="cognoms" name="cognoms" placeholder="Cognoms">
+                           type="text" id="cognoms" name="cognoms">
                 </div>
 
                 <br>
 
                 <div style="display: inline-block; width: 48%;">
-                    <label for="email">Correu:</label>
+                    <label for="email">Mail:</label>
                     <br>
                     <input style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
-                           type="email" id="email" name="email" placeholder="correu">
+                           type="email" id="email" name="email">
                 </div>
 
                 <div style="display: inline-block; width: 48%;">
-                    <label for="edat">Franja d'edat</label>
+                    <label for="edat">Age range</label>
                     <br>
                     <select style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
                             id="edat" name="edat">
-                        <option value="menor16">Menor 16</option>
+                        <option value="menor16">Under 16</option>
                         <option value="16-25">16-25</option>
                         <option value="25-40">25-40</option>
-                        <option value="major40">Major 40</option>
+                        <option value="major40">Elderly 40</option>
                     </select>
                 </div>
 
@@ -67,16 +67,15 @@
             <br><br>
 
             <fieldset class="dades_form">
-                <legend class="titol_dades_form"><strong>DETALLS DE CONSULTA</strong></legend>
+                <legend class="titol_dades_form"><strong>INQUIRY DETAILS</strong></legend>
 
-                <label for="consulta">Escriu la teva consulta</label><br>
-                <textarea id="consulta" name="consulta" rows="5" style="width: 80%; box-sizing: border-box; margin-top: 5px;"
-                    placeholder="Escriu la teva consulta aqui"></textarea>
+                <label for="consulta">Write your query</label><br>
+                <textarea id="consulta" name="consulta" rows="5" style="width: 80%; box-sizing: border-box; margin-top: 5px;"></textarea>
             </fieldset>
 
             <br>
 
-            <button class="btn btn-blue" type="submit" style="cursor: pointer;">Enviar</button>
+            <button class="btn btn-blue" type="submit" style="cursor: pointer;">Send</button>
         </form>
 
         <footer class="footer-box">
