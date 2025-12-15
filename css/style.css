@@ -267,7 +267,7 @@ body.dark-mode .hero-box {
 .js-box {
     position: relative;
     width: 100%;
-    height: 350px; /* Un poco más alto para que luzca */
+    height: 350px;
     background: #000;
     overflow: hidden;
     border: 2px solid #333;
@@ -281,21 +281,76 @@ canvas {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1; /* El canvas va al fondo */
+    z-index: 1;
 }
 
 /* Texto flotante encima del canvas */
 .instruction-text {
     position: absolute;
-    z-index: 10; /* Encima del canvas */
+    z-index: 10;
     color: white;
     background: rgba(0, 0, 0, 0.6);
     padding: 5px 15px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 20px;
     font-size: 14px;
-    pointer-events: none; /* El ratón atraviesa el texto para tocar el canvas */
+    pointer-events: none;
     text-transform: uppercase;
     letter-spacing: 1px;
     backdrop-filter: blur(2px);
+}
+
+/* =========================================
+   INTRO LOADER (PANTALLA DE CÀRREGA)
+   ========================================= */
+
+#cyber-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 9999; /* Per sobre de tot */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Efecte pujada */
+}
+
+/* Quan s'afegeix aquesta classe, la cortina puja */
+#cyber-loader.loaded {
+    transform: translateY(-100%);
+}
+
+.loader-text {
+    font-family: 'Courier New', monospace;
+    color: #0f0; /* Verd Hacker */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Barra de càrrega */
+.loader-bar {
+    width: 300px;
+    height: 4px;
+    background: #333;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+.loader-progress {
+    width: 0%;
+    height: 100%;
+    background: #0f0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-shadow: 0 0 10px #0f0;
+    transition: width 0.05s linear;
 }
