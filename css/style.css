@@ -373,3 +373,65 @@ canvas {
     text-decoration: none; /* Quita el subrayado */
     margin: 0;      /* Quitamos márgenes que puedan estorbar */
 }
+
+/* =========================================
+   ESTILOS DEL BUSCADOR (SEARCH BAR)
+   ========================================= */
+
+.search-container {
+    margin: 20px 0;
+    position: relative;
+    max-width: 100%; /* Opcional: para asegurar que no se salga */
+}
+
+#searchInput {
+    width: 100%;
+    padding: 15px 20px;
+    padding-left: 45px; /* Dejamos hueco a la izquierda para el icono */
+    font-size: 16px;
+    border: 2px solid #333;
+    background-color: #f9f9f9;
+    color: #333;
+    border-radius: 5px;
+    outline: none; /* Quita el borde azul por defecto de los navegadores */
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    background-color: #fff;
+    border-color: #0056b3; /* Color azul al escribir */
+    box-shadow: 0 0 8px rgba(0, 86, 179, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%); /* Centra verticalmente el icono */
+    font-size: 20px;
+    color: #777;
+    pointer-events: none; /* Permite hacer clic "a través" del icono */
+}
+
+/* =========================================
+   TRANSICIÓN DE PÁGINA
+   ========================================= */
+
+/* El telón negro que cubre todo */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111; /* Color de fondo (negro suave) */
+    z-index: 9999; /* Asegura que esté por encima de todo */
+    opacity: 1;    /* Empieza visible (todo negro) */
+    pointer-events: none; /* Permite clics cuando sea transparente */
+    transition: opacity 0.5s ease; /* Duración de la animación */
+}
+
+/* Esta clase hace que el telón desaparezca */
+.page-transition.fade-out {
+    opacity: 0;
+}
