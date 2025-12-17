@@ -354,3 +354,22 @@ canvas {
     box-shadow: 0 0 10px #0f0;
     transition: width 0.05s linear;
 }
+
+/* =========================================
+   ESTILOS ESPECÍFICOS DE LA HOME (INDEX)
+   ========================================= */
+
+/* Contenedor de la lista vertical */
+.projects-list {
+    display: flex;
+    flex-direction: column; /* Pone los elementos uno debajo de otro */
+    gap: 20px;              /* Espacio entre cajas */
+}
+
+/* Modificamos las cajas SOLO cuando están dentro de la lista */
+.projects-list .project-box {
+    width: 200px;   /* Ancho fijo como en el dibujo */
+    height: 60px;   /* Más bajitos que los normales */
+    text-decoration: none; /* Quita el subrayado */
+    margin: 0;      /* Quitamos márgenes que puedan estorbar */
+}
