@@ -1,3 +1,5 @@
+alert("¡El archivo JS está conectado!");
+
 /* =========================================
    1. FUNCIÓN DEL BUSCADOR (FILTRO)
    ========================================= */
