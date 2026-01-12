@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    // --- 1. TRANSICIONES DE PÁGINA (Funciona en todas) ---
     const transitionEl = document.querySelector('.page-transition');
 
     if (transitionEl) {
-        // Al entrar: quitamos el telón
+        // Al entrar: quitamos el negro
         setTimeout(() => {
-            transitionEl.classList.add('reveal');
+            transitionEl.classList.add('fade-out');
         }, 100);
 
-        // Al salir: ponemos el telón
+        // Al salir: ponemos el negro
         const anchors = document.querySelectorAll('a');
         anchors.forEach(anchor => {
             anchor.addEventListener('click', e => {
@@ -15,58 +17,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 e.preventDefault();
                 let target = anchor.href;
-
-                transitionEl.classList.remove('reveal'); // Reset
-                transitionEl.classList.add('cover');     // Animación entrar
-
-                setTimeout(() => {
-                    window.location.href = target;
-                }, 600);
+                transitionEl.classList.remove('fade-out');
+                setTimeout(() => { window.location.href = target; }, 500);
             });
         });
     }
 
-    // 2. ACTIVAR EL BUSCADOR (Si existe en la página)
-    const input = document.getElementById('searchInput');
-    if (input) {
-        // Escuchamos cuando alguien escribe
-        input.addEventListener('keyup', ejecutarBuscador);
+    // --- 2. BUSCADOR (Solo funciona si existe el input) ---
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('keyup', filterProjects);
     }
 });
 
-
-// 3. FUNCIÓN DEL BUSCADOR (FUERA para que sea global)
-function ejecutarBuscador() {
-    // A. Cogemos el texto
+function filterProjects() {
     var input = document.getElementById('searchInput');
     var filter = input.value.toUpperCase();
-
-    // B. Cogemos TODOS los proyectos (cajas)
-    var boxes = document.getElementsByClassName('project-box');
-
-    // C. Primero filtramos las CAJAS individuales
-    for (var i = 0; i < boxes.length; i++) {
-        var txtValue = boxes[i].textContent || boxes[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            boxes[i].style.display = ""; // Mostrar
-        } else {
-            boxes[i].style.display = "none"; // Ocultar
-        }
-    }
-
-    // D. Ahora miramos los GRUPOS (Títulos) - Si existen
     var groups = document.getElementsByClassName('project-group');
-    if (groups.length > 0) {
-        for (var j = 0; j < groups.length; j++) {
-            var group = groups[j];
-            // Buscamos si hay alguna caja visible dentro de este grupo
-            var visibleBoxes = group.querySelectorAll('.project-box:not([style*="display: none"])');
 
-            if (visibleBoxes.length > 0) {
-                group.style.display = ""; // Mostrar título
+    for (var i = 0; i < groups.length; i++) {
+        var group = groups[i];
+        var boxes = group.getElementsByClassName('project-box');
+        var hasVisible = false;
+
+        for (var j = 0; j < boxes.length; j++) {
+            var txt = boxes[j].textContent || boxes[j].innerText;
+            if (txt.toUpperCase().indexOf(filter) > -1) {
+                boxes[j].style.display = "";
+                hasVisible = true;
             } else {
-                group.style.display = "none"; // Ocultar título vacío
+                boxes[j].style.display = "none";
             }
         }
+        // Ocultar grupo si está vacío
+        group.style.display = hasVisible ? "" : "none";
     }
 }
