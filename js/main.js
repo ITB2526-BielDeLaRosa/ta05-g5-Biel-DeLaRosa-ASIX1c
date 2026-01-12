@@ -1,5 +1,45 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+// ===============================================
+    // 1. TRANSICIONES DE PÁGINA
+    // ===============================================
+
+    // Referencia a la cortina negra
+    const transitionEl = document.querySelector('.page-transition');
+
+    if (transitionEl) {
+        // A) AL ENTRAR EN LA PÁGINA:
+        // Esperamos un poquito (100ms) y quitamos lo negro
+        setTimeout(() => {
+            transitionEl.classList.add('fade-out');
+        }, 100);
+
+        // B) AL SALIR (HACER CLIC EN ENLACES):
+        // Buscamos todos los enlaces de la web
+        const anchors = document.querySelectorAll('a');
+
+        anchors.forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                // Si el enlace es para abrir en otra pestaña (_blank) o es un ancla (#), lo ignoramos
+                if (anchor.target === '_blank' || anchor.getAttribute('href').startsWith('#')) {
+                    return;
+                }
+
+                // Evitamos que el navegador cambie de golpe
+                e.preventDefault();
+                let target = anchor.href;
+
+                // Ponemos la pantalla negra (quitamos la clase fade-out)
+                transitionEl.classList.remove('fade-out');
+
+                // Esperamos medio segundo (lo que dura la animación CSS) y cambiamos de página
+                setTimeout(() => {
+                    window.location.href = target;
+                }, 500);
+            });
+        });
+    }
+
     const searchInput = document.getElementById('searchInput');
 
     if (searchInput) {
