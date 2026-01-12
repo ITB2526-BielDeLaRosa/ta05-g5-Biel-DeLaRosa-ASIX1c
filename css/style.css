@@ -1,13 +1,14 @@
 /* =========================================
-   1. ESTILOS GENERALES (BASE)
+   ESTILOS GENERALES (BASE)
    ========================================= */
+
+/* --- RESET BÁSICO --- */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #ffffff;
     transition: background-color 0.3s ease, color 0.3s ease;
-    line-height: 1.6;
 }
 
 /* --- BARRA SUPERIOR (HEADER) --- */
@@ -15,16 +16,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 10px 40px;
     border-bottom: 2px solid #ddd;
     background-color: white;
-    /* Quitamos altura fija para que crezca en móvil si hace falta */
-    min-height: 80px;
+    height: 80px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .logo-text {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: #333;
     text-transform: uppercase;
@@ -35,10 +35,10 @@ body {
     gap: 15px;
 }
 
-/* --- BOTONES --- */
+/* --- BOTONES HEADER --- */
 .btn {
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-weight: bold;
     color: white;
     border-radius: 5px;
@@ -46,69 +46,86 @@ body {
     display: inline-block;
     transition: all 0.2s ease;
     border: none;
-    text-align: center;
-    cursor: pointer;
 }
 
-.btn-blue { background-color: #3498db; }
-.btn-dark { background-color: #2c3e50; }
+.btn-blue {
+    background-color: #3498db;
+}
+
+.btn-dark {
+    background-color: #2c3e50;
+}
 
 .btn:hover {
     opacity: 0.9;
     transform: translateY(-2px);
 }
 
-/* --- CONTENEDOR PRINCIPAL --- */
+/* --- CONTENIDO PRINCIPAL --- */
 .main-content, .container {
     max-width: 1000px;
-    width: 90%; /* Para que no pegue a los bordes en móvil */
     margin: 40px auto;
+    padding: 0 20px;
 }
 
-/* =========================================
-   2. SECCIÓN HERO (BANNER)
-   ========================================= */
+/* Estilo general para cajas tipo wireframe */
+.wireframe-box {
+    border: 2px solid #333;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- ESTILOS DEL FORMULARIO --- */
+.dades_form, .form-section {
+    border: 1px solid black;
+    margin-top: 30px;
+    position: relative;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.titol_dades_form, .section-legend {
+    color: #3498db;
+    font-weight: bold;
+    padding: 0 10px;
+    background: white;
+}
+
+input, select, textarea {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px;
+    color: #555;
+    outline: none;
+    background-color: white;
+}
+
+/* --- ESTILOS PÁGINA INICIO (INDEX) --- */
 .hero-box {
     width: 100%;
-    height: 300px; /* Un poco más alto para que luzca */
+    height: 200px;
     border: 2px solid #333;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 30px;
     background-color: #f0f0f0;
     overflow: hidden;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.hero-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* La clave para que no se deforme */
-}
-
-/* Títulos de sección */
-.section-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 30px 0 15px 0;
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
-    text-transform: uppercase;
-}
-
-/* =========================================
-   3. GRID DE PROYECTOS (RESPONSIVE)
-   ========================================= */
-/* Usamos CSS Grid: Mínimo 250px por caja, si cabe más, crea más columnas */
 .projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    display: flex;
+    gap: 30px;
 }
 
 .project-box {
-    /* Quitamos width fijo para que el Grid controle el tamaño */
-    width: 100%;
-    min-height: 120px;
+    width: 200px;
+    height: 100px;
     border: 2px solid #333;
     display: flex;
     align-items: center;
@@ -117,9 +134,7 @@ body {
     text-decoration: none;
     color: #333;
     background-color: white;
-    padding: 15px;
-    box-sizing: border-box; /* Para que el padding no rompa el tamaño */
-    border-radius: 5px;
+    cursor: pointer;
     transition: all 0.2s ease;
 }
 
@@ -127,4 +142,273 @@ body {
     background-color: #f2f2f2;
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border-color: #34
+}
+
+/* --- FOOTER --- */
+.footer-box {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 2px solid #333;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+/* =========================================
+   ESTILOS DEL MODO OSCURO (Dark Mode)
+   ========================================= */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .navbar {
+    background-color: #1f1f1f;
+    border-bottom: 2px solid #333;
+}
+
+body.dark-mode .logo-text {
+    color: #ffffff;
+}
+
+body.dark-mode .dades_form,
+body.dark-mode .form-section {
+    border-color: #3498db;
+}
+
+body.dark-mode .titol_dades_form,
+body.dark-mode .section-legend {
+    background-color: #121212;
+    color: #3498db;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #333333;
+    color: white;
+    border: 1px solid #555;
+}
+
+body.dark-mode .project-box {
+    background-color: #1e1e1e;
+    color: white;
+    border-color: #555;
+}
+
+body.dark-mode .project-box:hover {
+    background-color: #333;
+    color: #4fc3f7;
+}
+
+body.dark-mode .footer-box {
+    color: #bbb;
+    border-top-color: #444;
+}
+
+body.dark-mode .hero-box {
+    border-color: #555;
+    background-color: #1f1f1f;
+}
+
+/* --- ESTILOS DETALLE PROYECTO --- */
+.detail-header {
+    border: 2px solid #333;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 15px;
+    background-color: white;
+}
+
+.detail-subheader {
+    border: 2px solid #333;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.detail-content {
+    display: flex;
+    gap: 20px;
+    height: 400px;
+}
+
+.detail-text {
+    flex: 1;
+    border: 2px solid #333;
+    padding: 20px;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.detail-image {
+    flex: 1;
+    border: 2px solid #333;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+}
+
+.detail-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* =========================================
+   ESTILS EXTRES PER A FUNCIONALITATS JS (NIVELL PRO)
+   ========================================= */
+
+.js-box {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background: #000;
+    overflow: hidden;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Texto flotante encima del canvas */
+.instruction-text {
+    position: absolute;
+    z-index: 10;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    font-size: 14px;
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    backdrop-filter: blur(2px);
+}
+
+/* =========================================
+   INTRO LOADER (PANTALLA DE CÀRREGA)
+   ========================================= */
+
+#cyber-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 9999; /* Per sobre de tot */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Efecte pujada */
+}
+
+/* Quan s'afegeix aquesta classe, la cortina puja */
+#cyber-loader.loaded {
+    transform: translateY(-100%);
+}
+
+.loader-text {
+    font-family: 'Courier New', monospace;
+    color: #0f0; /* Verd Hacker */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Barra de càrrega */
+.loader-bar {
+    width: 300px;
+    height: 4px;
+    background: #333;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+.loader-progress {
+    width: 0%;
+    height: 100%;
+    background: #0f0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-shadow: 0 0 10px #0f0;
+    transition: width 0.05s linear;
+}
+
+/* =========================================
+   ESTILOS ESPECÍFICOS DE LA HOME (INDEX)
+   ========================================= */
+
+/* Contenedor de la lista vertical */
+.projects-list {
+    display: flex;
+    flex-direction: column; /* Pone los elementos uno debajo de otro */
+    gap: 20px;              /* Espacio entre cajas */
+}
+
+/* Modificamos las cajas SOLO cuando están dentro de la lista */
+.projects-list .project-box {
+    width: 200px;   /* Ancho fijo como en el dibujo */
+    height: 60px;   /* Más bajitos que los normales */
+    text-decoration: none; /* Quita el subrayado */
+    margin: 0;      /* Quitamos márgenes que puedan estorbar */
+}
+
+/* =========================================
+   ESTILOS DEL BUSCADOR (SEARCH BAR)
+   ========================================= */
+
+.search-container {
+    margin: 20px 0;
+    position: relative;
+    max-width: 100%; /* Opcional: para asegurar que no se salga */
+}
+
+#searchInput {
+    width: 100%;
+    padding: 15px 20px;
+    padding-left: 45px; /* Dejamos hueco a la izquierda para el icono */
+    font-size: 16px;
+    border: 2px solid #333;
+    background-color: #f9f9f9;
+    color: #333;
+    border-radius: 5px;
+    outline: none; /* Quita el borde azul por defecto de los navegadores */
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    background-color: #fff;
+    border-color: #0056b3; /* Color azul al escribir */
+    box-shadow: 0 0 8px rgba(0, 86, 179, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%); /* Centra verticalmente el icono */
+    font-size: 20px;
+    color: #777;
+    pointer-events: none; /* Permite hacer clic "a través" del icono */
+}
