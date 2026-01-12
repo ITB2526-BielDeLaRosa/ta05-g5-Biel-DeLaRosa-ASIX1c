@@ -6,8 +6,8 @@
     <title>Contacte - Web ITB</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
 </head>
 <body>
 
@@ -16,62 +16,70 @@
 
         <nav class="header-buttons">
             <a href="../llista_projectes.html" class="btn btn-blue">Home</a>
-            <a href="../index.html" class="btn btn-blue">Featured Projects</a>
+            <a href="../index.html" class="btn btn-blue">featured projects</a>
             <a href="formulari.html" class="btn btn-dark">Contact</a>
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container" style="padding: 20px;">
 
-        <form class="main-form">
-            <fieldset>
-                <legend>PERSONAL DATA</legend>
+        <form>
+            <fieldset class="dades_form">
+                <legend class="titol_dades_form"><strong>PERSONAL DATA</strong></legend>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="nom">Name:</label>
-                        <input type="text" id="nom" name="nom" class="form-control" placeholder="Your name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cognoms">Last names:</label>
-                        <input type="text" id="cognoms" name="cognoms" class="form-control" placeholder="Your surnames">
-                    </div>
+                <div style="display: inline-block; width: 48%; margin-bottom: 15px;">
+                    <label for="nom">Name:</label>
+                    <br>
+                    <input style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
+                           type="text" id="nom" name="nom">
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Mail:</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="example@email.com">
-                    </div>
+                <div style="display: inline-block; width: 48%; margin-bottom: 15px;">
+                    <label for="cognoms">Last names:</label>
+                    <br>
+                    <input style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
+                           type="text" id="cognoms" name="cognoms">
+                </div>
 
-                    <div class="form-group">
-                        <label for="edat">Age range:</label>
-                        <select id="edat" name="edat" class="form-control">
-                            <option value="menor16">Under 16</option>
-                            <option value="16-25">16-25</option>
-                            <option value="25-40">25-40</option>
-                            <option value="major40">Elderly 40</option>
-                        </select>
-                    </div>
+                <br>
+
+                <div style="display: inline-block; width: 48%;">
+                    <label for="email">Mail:</label>
+                    <br>
+                    <input style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
+                           type="email" id="email" name="email">
+                </div>
+
+                <div style="display: inline-block; width: 48%;">
+                    <label for="edat">Age range</label>
+                    <br>
+                    <select style="width: 60%; border:1px solid black; padding:6px; border-radius: 5px;"
+                            id="edat" name="edat">
+                        <option value="menor16">Under 16</option>
+                        <option value="16-25">16-25</option>
+                        <option value="25-40">25-40</option>
+                        <option value="major40">Elderly 40</option>
+                    </select>
                 </div>
 
             </fieldset>
 
-            <fieldset>
-                <legend>INQUIRY DETAILS</legend>
+            <br><br>
 
-                <div class="form-group">
-                    <label for="consulta">Write your query:</label>
-                    <textarea id="consulta" name="consulta" rows="5" class="form-control" placeholder="Type here..."></textarea>
-                </div>
+            <fieldset class="dades_form">
+                <legend class="titol_dades_form"><strong>INQUIRY DETAILS</strong></legend>
+
+                <label for="consulta">Write your query</label><br>
+                <textarea id="consulta" name="consulta" rows="5" style="width: 80%; box-sizing: border-box; margin-top: 5px;"></textarea>
             </fieldset>
 
-            <button class="btn btn-blue" type="submit" style="width: 100%; margin-top: 20px; font-size: 1.1rem;">Send Message</button>
+            <br>
+
+            <button class="btn btn-blue" type="submit" style="cursor: pointer;">Send</button>
         </form>
 
         <footer class="footer-box">
-            2025/26 Student: Biel De La Rosa
+            2025/26 Alumnes : Biel y Ramiro
         </footer>
 
     </div>
