@@ -1,55 +1,52 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    // --- 1. TRANSICIONES DE PÁGINA (Funciona en todas) ---
-    const transitionEl = document.querySelector('.page-transition');
+    const searchInput = document.getElementById('searchInput');
 
-    if (transitionEl) {
-        // Al entrar: quitamos el negro
-        setTimeout(() => {
-            transitionEl.classList.add('fade-out');
-        }, 100);
+    if (searchInput) {
+        // Detectamos cuando pulsas una tecla dentro del buscador
+        searchInput.addEventListener('keydown', function(e) {
 
-        // Al salir: ponemos el negro
-        const anchors = document.querySelectorAll('a');
-        anchors.forEach(anchor => {
-            anchor.addEventListener('click', e => {
-                if (anchor.target === '_blank' || anchor.getAttribute('href').startsWith('#')) return;
+            // Solo actuamos si la tecla es ENTER
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Evitamos que se recargue la página
 
-                e.preventDefault();
-                let target = anchor.href;
-                transitionEl.classList.remove('fade-out');
-                setTimeout(() => { window.location.href = target; }, 500);
-            });
+                // 1. Cogemos lo que has escrito (en minúsculas)
+                var term = searchInput.value.toLowerCase();
+                if (term.trim() === "") return; // Si está vacío no hacemos nada
+
+                // 2. Buscamos todos los TÍTULOS de sección
+                var titles = document.getElementsByClassName('section-title');
+                var found = false;
+
+                // 3. Recorremos los títulos para ver si alguno coincide
+                for (var i = 0; i < titles.length; i++) {
+                    var titleText = titles[i].innerText.toLowerCase();
+
+                    // Si el título contiene la palabra (ej: "CSS" dentro de "CSS & DESIGN")
+                    if (titleText.includes(term)) {
+
+                        // --- AQUÍ ESTÁ LA CLAVE: HACEMOS SCROLL HASTA EL TÍTULO ---
+                        titles[i].scrollIntoView({
+                            behavior: 'smooth', // Desplazamiento suave
+                            block: 'start'
+                        });
+
+                        found = true;
+                        break; // Paramos de buscar, ya lo hemos encontrado
+                    }
+                }
+
+                // (Opcional) Si no encontramos título, buscamos en las cajas de proyectos
+                if (!found) {
+                    var boxes = document.getElementsByClassName('project-box');
+                    for (var j = 0; j < boxes.length; j++) {
+                        if (boxes[j].innerText.toLowerCase().includes(term)) {
+                            boxes[j].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            break;
+                        }
+                    }
+                }
+            }
         });
     }
-
-    // --- 2. BUSCADOR (Solo funciona si existe el input) ---
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('keyup', filterProjects);
-    }
 });
-
-function filterProjects() {
-    var input = document.getElementById('searchInput');
-    var filter = input.value.toUpperCase();
-    var groups = document.getElementsByClassName('project-group');
-
-    for (var i = 0; i < groups.length; i++) {
-        var group = groups[i];
-        var boxes = group.getElementsByClassName('project-box');
-        var hasVisible = false;
-
-        for (var j = 0; j < boxes.length; j++) {
-            var txt = boxes[j].textContent || boxes[j].innerText;
-            if (txt.toUpperCase().indexOf(filter) > -1) {
-                boxes[j].style.display = "";
-                hasVisible = true;
-            } else {
-                boxes[j].style.display = "none";
-            }
-        }
-        // Ocultar grupo si está vacío
-        group.style.display = hasVisible ? "" : "none";
-    }
-}
