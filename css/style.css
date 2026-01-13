@@ -413,22 +413,20 @@ canvas {
     pointer-events: none; /* Permite hacer clic "a través" del icono */
 }
 
-.page-transition {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000; /* Puedes probar con #111 o gris muy oscuro */
-    z-index: 10000;
+/* El contenedor principal (invisible, solo organiza) */
+/* =========================================
+   TRANSICIÓN PRO: "THE LIFT"
+   ========================================= */
 
-    /* LA MAGIA: Usamos transformación en lugar de opacidad */
-    transform: scaleX(1);
-    transform-origin: left; /* Al aparecer, crece desde la izquierda */
-    transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1); /* Movimiento robótico suave */
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Velocidad suave */
+
+    /* Evita scroll mientras transiciona */
+    overflow-x: hidden;
 }
 
-.page-transition.fade-out {
-    transform: scaleX(0);
-    transform-origin: right; /* Al irse, se encoge hacia la derecha */
+/* 2. ESTADO VISIBLE (Cuando carga la web) */
+body.fade-in {
+    opacity: 1; /* Se vuelve totalmente visible */
 }
