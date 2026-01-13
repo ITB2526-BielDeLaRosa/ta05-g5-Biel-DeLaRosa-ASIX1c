@@ -431,3 +431,43 @@ body {
 body.fade-in {
     opacity: 1; /* Se vuelve totalmente visible */
 }
+
+/* =========================================
+   BOTÓN VOLVER ARRIBA (BACK TO TOP)
+   ========================================= */
+
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+
+    background-color: #333; /* Color oscuro (a juego con tus bordes) */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Lo hace redondo */
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+
+    /* EFECTO DE APARICIÓN */
+    opacity: 0;           /* Empieza invisible */
+    pointer-events: none; /* No se puede clicar si es invisible */
+    transition: all 0.3s ease;
+    transform: translateY(20px); /* Empieza un poco más abajo */
+}
+
+/* Cuando le añadimos la clase 'show', aparece */
+.scroll-top-btn.show {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+/* Al pasar el ratón por encima */
+.scroll-top-btn:hover {
+    background-color: #3498db; /* Azul (como tus botones featured) */
+    transform: scale(1.1); /* Se hace un pelín más grande */
+}
