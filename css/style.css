@@ -439,12 +439,15 @@ body.fade-in {
 .scroll-top-btn {
     position: fixed;
 
-    /* --- CAMBIOS DE POSICIÓN --- */
-    left: 80px;        /* Antes 30px. Ahora está más separado del borde. */
-    bottom: 300px;     /* Antes 100px. Ahora está a media altura (más visible). */
-    right: auto;       /* Ignoramos la derecha */
+    /* --- AQUÍ ESTÁ EL TRUCO --- */
+    left: 50%;             /* 1. Lo colocamos en el centro exacto de la pantalla */
+    margin-left: -600px;   /* 2. Lo empujamos a la izquierda para que toque el borde de tu texto */
+                           /* NOTA: Si lo quieres más cerca, baja este número a -550px */
 
-    /* --- RESTO DEL DISEÑO (Igual que antes) --- */
+    bottom: 300px;         /* Altura (igual que antes) */
+    right: auto;           /* Anulamos la derecha */
+
+    /* --- RESTO DEL DISEÑO (IGUAL) --- */
     width: 50px;
     height: 50px;
     background-color: #333;
@@ -463,7 +466,15 @@ body.fade-in {
     transform: translateY(20px);
 }
 
-/* Mantenemos el resto igual */
+/* IMPORTANTE: Esto evita que el botón desaparezca en pantallas pequeñas (Laptops pequeños) */
+@media (max-width: 1300px) {
+    .scroll-top-btn {
+        left: 20px;        /* Si la pantalla es pequeña, se pega al borde normal */
+        margin-left: 0;    /* Quitamos el margen raro */
+    }
+}
+
+/* Mantener el resto igual */
 .scroll-top-btn.show {
     opacity: 1;
     pointer-events: all;
@@ -472,5 +483,5 @@ body.fade-in {
 
 .scroll-top-btn:hover {
     background-color: #3498db;
-    transform: scale(1.1);
+    transform: scale(1.1); /* Efecto lupa */
 }
