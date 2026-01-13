@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-// ===============================================
-    // 1. TRANSICIONES DE PÁGINA
     // ===============================================
-
-   setTimeout(() => {
+    // 1. TRANSICIONES DE PÁGINA (APARECER)
+    // ===============================================
+    setTimeout(() => {
         document.body.classList.add('fade-in');
     }, 10);
 
@@ -16,62 +15,49 @@ document.addEventListener("DOMContentLoaded", function() {
 
     anchors.forEach(anchor => {
         anchor.addEventListener('click', e => {
-            // Ignoramos enlaces que abren pestaña nueva (_blank) o anclas (#)
+            // Ignoramos enlaces que abren pestaña nueva o anclas #
             if (anchor.target === '_blank' || anchor.getAttribute('href').startsWith('#')) {
                 return;
             }
 
-            // Evitamos que cargue la página de golpe
             e.preventDefault();
             let target = anchor.href;
 
             // Quitamos la clase 'fade-in' -> LA WEB SE VUELVE TRANSPARENTE
             document.body.classList.remove('fade-in');
 
-            // Esperamos 0.5 segundos (lo que dura la transición) y cambiamos
+            // Esperamos 0.5 segundos y cambiamos
             setTimeout(() => {
                 window.location.href = target;
             }, 500);
         });
     });
 
+
+    // ===============================================
+    // 3. BUSCADOR (SEARCH BAR)
+    // ===============================================
     const searchInput = document.getElementById('searchInput');
 
     if (searchInput) {
-        // Detectamos cuando pulsas una tecla dentro del buscador
         searchInput.addEventListener('keydown', function(e) {
-
-            // Solo actuamos si la tecla es ENTER
             if (e.key === 'Enter') {
-                e.preventDefault(); // Evitamos que se recargue la página
-
-                // 1. Cogemos lo que has escrito (en minúsculas)
+                e.preventDefault();
                 var term = searchInput.value.toLowerCase();
-                if (term.trim() === "") return; // Si está vacío no hacemos nada
+                if (term.trim() === "") return;
 
-                // 2. Buscamos todos los TÍTULOS de sección
                 var titles = document.getElementsByClassName('section-title');
                 var found = false;
 
-                // 3. Recorremos los títulos para ver si alguno coincide
                 for (var i = 0; i < titles.length; i++) {
                     var titleText = titles[i].innerText.toLowerCase();
-
-                    // Si el título contiene la palabra (ej: "CSS" dentro de "CSS & DESIGN")
                     if (titleText.includes(term)) {
-
-                        // --- AQUÍ ESTÁ LA CLAVE: HACEMOS SCROLL HASTA EL TÍTULO ---
-                        titles[i].scrollIntoView({
-                            behavior: 'smooth', // Desplazamiento suave
-                            block: 'start'
-                        });
-
+                        titles[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
                         found = true;
-                        break; // Paramos de buscar, ya lo hemos encontrado
+                        break;
                     }
                 }
 
-                // (Opcional) Si no encontramos título, buscamos en las cajas de proyectos
                 if (!found) {
                     var boxes = document.getElementsByClassName('project-box');
                     for (var j = 0; j < boxes.length; j++) {
@@ -84,4 +70,32 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+    // ===============================================
+    // 4. NUEVO: BOTÓN VOLVER ARRIBA (BACK TO TOP)
+    // ===============================================
+    // Esto es lo nuevo que hemos añadido:
+
+    const btnScroll = document.getElementById('btnScrollToTop');
+
+    if (btnScroll) {
+        // A. DETECTAR SCROLL PARA MOSTRAR/OCULTAR
+        window.addEventListener('scroll', function() {
+            // Si bajamos más de 300px, mostramos el botón
+            if (window.scrollY > 300) {
+                btnScroll.classList.add('show');
+            } else {
+                btnScroll.classList.remove('show');
+            }
+        });
+
+        // B. AL HACER CLIC, SUBIR SUAVEMENTE
+        btnScroll.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
 });

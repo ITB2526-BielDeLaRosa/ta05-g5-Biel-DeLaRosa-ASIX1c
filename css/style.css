@@ -438,36 +438,39 @@ body.fade-in {
 
 .scroll-top-btn {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+
+    /* --- CAMBIOS DE POSICIÓN --- */
+    left: 80px;        /* Antes 30px. Ahora está más separado del borde. */
+    bottom: 300px;     /* Antes 100px. Ahora está a media altura (más visible). */
+    right: auto;       /* Ignoramos la derecha */
+
+    /* --- RESTO DEL DISEÑO (Igual que antes) --- */
     width: 50px;
     height: 50px;
-
-    background-color: #333; /* Color oscuro (a juego con tus bordes) */
+    background-color: #333;
     color: white;
     border: none;
-    border-radius: 50%; /* Lo hace redondo */
+    border-radius: 50%;
     font-size: 24px;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     z-index: 1000;
 
-    /* EFECTO DE APARICIÓN */
-    opacity: 0;           /* Empieza invisible */
-    pointer-events: none; /* No se puede clicar si es invisible */
+    /* ANIMACIÓN */
+    opacity: 0;
+    pointer-events: none;
     transition: all 0.3s ease;
-    transform: translateY(20px); /* Empieza un poco más abajo */
+    transform: translateY(20px);
 }
 
-/* Cuando le añadimos la clase 'show', aparece */
+/* Mantenemos el resto igual */
 .scroll-top-btn.show {
     opacity: 1;
     pointer-events: all;
     transform: translateY(0);
 }
 
-/* Al pasar el ratón por encima */
 .scroll-top-btn:hover {
-    background-color: #3498db; /* Azul (como tus botones featured) */
-    transform: scale(1.1); /* Se hace un pelín más grande */
+    background-color: #3498db;
+    transform: scale(1.1);
 }
