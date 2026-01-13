@@ -386,14 +386,15 @@ canvas {
 
 #searchInput {
     width: 100%;
+    box-sizing: border-box;  /* <--- ESTO ES LA CLAVE PARA QUE CUADRE */
     padding: 15px 20px;
-    padding-left: 45px; /* Dejamos hueco a la izquierda para el icono */
+    padding-left: 45px;
     font-size: 16px;
-    border: 2px solid #333;
+    border: 2px solid #333;  /* Mismo grosor de borde que los botones */
     background-color: #f9f9f9;
     color: #333;
-    border-radius: 5px;
-    outline: none; /* Quita el borde azul por defecto de los navegadores */
+    border-radius: 5px;      /* O 0px si quieres esquinas cuadradas como los botones */
+    outline: none;
     transition: all 0.3s ease;
 }
 
