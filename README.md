@@ -1,45 +1,45 @@
-# 📂 TA05 - Portafolio de Proyectos
+# 📂 TA05 - Project Portfolio
 
-**Alumno:** Biel De La Rosa  
-**Curso:** ASIX 1c (2025/2026)  
-**Asignatura:** Implantació d'Aplicacions Web
-
----
-
-## 📝 Descripción
-Este es mi portafolio personal diseñado para la TA05.
-
-🔗 **Ver web online:** [Click aquí para visitar](https://itb2526-bieldelarosa.github.io/ta05-g5-Biel-DeLaRosa-ASIX1c/llista_projectes.html)
+**Student:** Biel De La Rosa  
+**Course:** ASIX 1c (2025/2026)  
+**Subject:** Web Application Deployment
 
 ---
 
-## 🚀 Características Principales
+## 📝 Description
+This is my personal portfolio designed for the TA05 assignment.
 
-Esta web no es solo HTML estático; incluye funcionalidades interactivas programadas con JavaScript nativo:
-
-### 1. 🔍 Buscador Inteligente
-* Situado en la **Página de Proyectos**.
-* Permite buscar temas específicos (ej: "Python", "CSS").
-* **Acción:** Detecta la sección y hace *scroll* automático hasta el proyecto buscado.
-
-### 2. ⬆️ Botón "Volver Arriba"
-* Un botón flotante dinámico que aparece cuando el usuario hace scroll hacia abajo.
-* Realiza una animación suave para volver al inicio de la página.
-* Está posicionado ergonómicamente en el lado izquierdo.
-
-### 3. 🎨 Diseño y Navegación
-* **Transiciones "Ghost":** Efectos de desvanecimiento (fade-in/out) al cambiar de página.
-* **Responsive:** Adaptable 100% a dispositivos móviles y escritorio.
-* **Proyectos Destacados:** Sección especial en la página de inicio (Home).
+🔗 **Live Website:** [Click here to visit](https://itb2526-bieldelarosa.github.io/ta05-g5-Biel-DeLaRosa-ASIX1c/llista_projectes.html)
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
-* **HTML5** (Estructura semántica)
-* **CSS3** (Flexbox, Animaciones, Variables)
-* **JavaScript** (Manipulación del DOM, Eventos)
+## 🚀 Key Features
+
+This website is not just static HTML; it includes interactive features programmed with native JavaScript:
+
+### 1. 🔍 Smart Search Bar
+* Located on the **Projects Page**.
+* Allows searching for specific topics (e.g., "Python", "CSS").
+* **Action:** Detects the section and automatically *scrolls* to the searched project.
+
+### 2. ⬆️ "Back to Top" Button
+* A dynamic floating button that appears when the user scrolls down.
+* Performs a smooth animation to return to the top of the page.
+* Ergonomically positioned on the left side.
+
+### 3. 🎨 Design & Navigation
+* **"Ghost" Transitions:** Fade-in/out effects when changing pages.
+* **Responsive:** 100% adaptable to mobile and desktop devices.
+* **Featured Projects:** Special section on the Home page.
 
 ---
 
-## 📬 Contacto
-El sitio incluye una **Página de Contacto** con un formulario rellenable para feedback y mensajes.
+## 🛠️ Technologies Used
+* **HTML5** (Semantic structure)
+* **CSS3** (Flexbox, Animations, Variables)
+* **JavaScript** (DOM Manipulation, Events)
+
+---
+
+## 📬 Contact
+The site includes a **Contact Page** with a fillable form for feedback and messages.
