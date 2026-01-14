@@ -7,7 +7,7 @@
 ---
 
 ## 📝 Descripción
-Este es mi portafolio personal diseñado para almacenar y mostrar todos los proyectos realizados durante el curso de ASIX. El objetivo principal ha sido crear una experiencia de usuario fluida, simulando una **Single Page Application (SPA)** mediante transiciones suaves y una interfaz limpia.
+Este es mi portafolio personal diseñado para la TA05.
 
 🔗 **Ver web online:** [Click aquí para visitar](https://itb2526-bieldelarosa.github.io/ta05-g5-Biel-DeLaRosa-ASIX1c/llista_projectes.html)
 
